@@ -24,6 +24,7 @@ const twitterService = (req, res, next) => {
       res.status(500).send(error);
     };
   });
+  next();
 }
 
 module.exports = twitterService;
