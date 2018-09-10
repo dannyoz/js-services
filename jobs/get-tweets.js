@@ -2,15 +2,19 @@ const request = require("request");
 const cheerio = require("cheerio");
 
 const getTweets = () => {
-  getSingleTweet();
-};
-
-const getSingleTweet = () => {
   const url = "https://twitter.com/JimmySynthetic";
 
-  request.get(url).on("response", response => {
-    console.log(response.statusCode); // 200
-    console.log(response.headers["content-type"]); // 'image/png'
+  request(url, (err, res, html) => {
+    if (!err) {
+      const $ = cheerio.load(html);
+      const $tweets = $(".tweet");
+
+      $tweets.each((i, ele) => {
+        const $tweet = $(ele);
+        const tweetText = $tweet.find(".tweet-text");
+        console.log(tweetText.text());
+      });
+    }
   });
 };
 
