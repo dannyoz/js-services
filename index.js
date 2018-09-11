@@ -3,7 +3,6 @@ const express = require('express');
 const js = express();
 const env = require('dotenv')
 const bodyParser = require('body-parser');
-const apiVersion = '/api/v1';
 // -------------------------------------------------- //
 
 // ------------------- Config ----------------------- //
@@ -14,13 +13,13 @@ js.use(bodyParser.json());
 
 // ------------------- Services --------------------- //
 const dummyService = require('./services/dummy');
-js.use(`${apiVersion}/dummy`, dummyService);
+js.use(dummyService());
 
 const envService = require('./services/env');
-js.use('/env', envService);
+js.use(envService());
 
 const twitterService = require('./services/twitter');
-js.use(`${apiVersion}/twitter`, twitterService);
+js.use(twitterService());
 // -------------------------------------------------- //
 
 js.listen(js.get('port'), function() {

@@ -11,7 +11,9 @@ const getTweets = () => {
 
       $tweets.each((i, ele) => {
         const $tweet = $(ele);
-        const tweetText = $tweet.find(".tweet-text");
+        const tweetText = $tweet.find(".tweet-text").first();
+        
+        $tweet.find('.tweet-text .twitter-timeline-link').remove();
         console.log(tweetText.text());
       });
     }
