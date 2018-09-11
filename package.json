@@ -19,8 +19,10 @@
   "homepage": "https://github.com/dannyoz/js-services#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "cheerio": "^1.0.0-rc.2",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
+    "request": "^2.88.0",
     "twit": "^2.2.11"
   }
 }
